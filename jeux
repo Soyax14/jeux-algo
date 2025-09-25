@@ -1,0 +1,15 @@
+def create_board():
+    return [[0] * COLS for _ in range(ROWS)]
+
+def print_board(board):
+    print("\n  " + " ".join(str(c+1) for c in range(COLS)))
+    for row in board:
+        print(" |" + "|".join(" " if v==0 else ("X" if v==1 else "O") for v in row) + "|")
+    print("  " + "--"*COLS)
+
+def drop_piece(board, col, player):
+    for r in range(ROWS-1, -1, -1):
+        if board[r][col] == 0:
+            board[r][col] = player
+            return True
+    return False
