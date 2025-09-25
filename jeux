@@ -59,3 +59,6 @@ def play():
             print("Match nul !")
             break
         player = 2 if player == 1 else 1
+
+if __name__ == "__main__":
+    play()
