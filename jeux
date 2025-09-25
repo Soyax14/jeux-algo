@@ -13,3 +13,20 @@ def drop_piece(board, col, player):
             board[r][col] = player
             return True
     return False
+
+def check_win(board, player):
+    dirs = [(0,1),(1,0),(1,1),(-1,1)]
+    for r in range(ROWS):
+        for c in range(COLS):
+            if board[r][c] != player: 
+                continue
+            for dr, dc in dirs:
+                count = 0
+                rr, cc = r, c
+                while 0 <= rr < ROWS and 0 <= cc < COLS and board[rr][cc] == player:
+                    count += 1
+                    if count == 4:
+                        return True
+                    rr += dr
+                    cc += dc
+    return False
